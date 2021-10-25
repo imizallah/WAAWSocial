@@ -1,0 +1,46 @@
+.register {
+  box-shadow: 0 2px 12px -3px rgba(0, 0, 0, .5);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  padding: 30px;
+}
+
+.holder {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.register h3 {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, .6);
+  max-width: 160px;
+  margin: 5px 0px 30px 5px;
+  padding-bottom: 10px;
+  /* padding: 10px; */
+  font-size: 30px;
+  color: rgb(13, 136, 136);
+  font-weight: bold;
+  border-bottom: 4px solid rgb(13, 136, 136);
+}
+
+.MuiOutlinedInput-root.Mui-focused
+.MuiOutlinedInput-notchedOutline {  
+  border-color: rgb(13, 136, 136) !important;
+}
+
+.PrivateNotchedOutline-legendLabelled-5 > span {
+  color: rgb(13, 136, 136) !important;
+}
+
+@media screen and (max-width: 450px) {
+  .register {
+    width: 80vw;
+
+  }
+
+  .holder {
+    width: 95%;
+  }
+}

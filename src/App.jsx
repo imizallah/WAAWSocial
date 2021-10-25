@@ -1,50 +1,41 @@
-import { Grid, makeStyles } from '@material-ui/core';
-import Left from './components/Left';
-import MainFeed from './components/MainFeed';
-import Navbar from './components/Navbar';
-import Right from './components/Right';
-import Add from './components/Add';
-import AddIcon from '@material-ui/icons/Add';
-import ForumRoundedIcon from '@material-ui/icons/ForumRounded';
-import PeopleOutlineRoundedIcon from '@material-ui/icons/PeopleOutlineRounded';
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import Login from './components/pages/auth/Login';
+import Register from './components/pages/auth/Register';
+import Timeline from "./components/pages/timeline/Timeline";
+import { Toaster } from 'react-hot-toast';
 
-
-const useStyles = makeStyles(theme => ({
-  right: {
-    [theme.breakpoints.down("sm")]: {
-      display: "none"
-    }
-  }
-}));
  
 function App() {
-  const classes = useStyles();
-
+ 
   return (
-    <div>
-      <Navbar />
-      <Grid container>
-        <Grid className={classes.left} item sm={2} xs={2}>
-          <Left />
-        </Grid>
-
-        <Grid className={classes.center} item sm={7} xs={10}>
-          <MainFeed />
-        </Grid>
-
-        <Grid className={classes.right} item sm={3} >
-          <Right />
-        </Grid>
-      </Grid>
-      
-      <Add Icon={AddIcon} iconName='post' color='secondary' />
-      <Add Icon={ForumRoundedIcon} iconName='chat' color='primary' />
-      <Add Icon={PeopleOutlineRoundedIcon} iconName='friends' color='warning' />
-
-
-
-    </div>
-
+    <>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Timeline}></Route>
+          <Route exact path="/login" component={Login}></Route>
+          <Route exact path="/register" component={Register}></Route>
+        </Switch>
+      </Router>
+      <Toaster 
+        position="top-right"
+        toastOptions={{
+          duration: 5000,
+          style: {
+            color: 'white'
+          },
+          success: {
+            style: {
+              background: 'green',
+            },
+          },
+          error: {
+            style: {
+              background: 'red',
+            },
+          },
+        }}
+      />
+    </>
   );
 }
 
