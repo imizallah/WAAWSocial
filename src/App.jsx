@@ -3,6 +3,7 @@ import Login from './components/pages/auth/Login';
 import Register from './components/pages/auth/Register';
 import Timeline from "./components/pages/timeline/Timeline";
 import { Toaster } from 'react-hot-toast';
+import VerifyUser from "./components/pages/auth/VerifyUser";
 
  
 function App() {
@@ -12,8 +13,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Timeline}></Route>
-          <Route exact path="/login" component={Login}></Route>
-          <Route exact path="/register" component={Register}></Route>
+          <Route path="/login" component={Login}></Route>
+          <Route path="/verify-user" component={VerifyUser}></Route>
+          <Route path="/register" component={Register}></Route>
         </Switch>
       </Router>
       <Toaster 

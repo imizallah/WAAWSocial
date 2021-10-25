@@ -9,6 +9,7 @@ import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import toast from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,6 +41,7 @@ const Register = () => {
   const email = useRef();
   const password = useRef();
   const gender = useRef();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -53,12 +55,12 @@ const Register = () => {
       email: email.current.value,
       password: password.current.value,
       gender: gender.current.value
-    }
+    } 
 
     try {
       let res = await axios.post('http://localhost:7000/api/v1/auth/register', user);
       if(res.data.success) toast.success(res.data.msg);
-      console.log(res.data);
+      history.push('/verify-user');
     }catch(err) { 
       if(!err.response.data.success) return toast.error(err.response.data.msg);
     }
