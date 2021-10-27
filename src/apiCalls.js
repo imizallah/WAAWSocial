@@ -12,5 +12,6 @@ export const loginCall = async (userCredentials, dispatch) => {
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data.data });
   }catch(err) { 
     if(!err.response.data.success) return toast.error(err.response.data.msg);
+    dispatch({ type: 'LOGIN_FAILURE', payload: err });
   }
 }

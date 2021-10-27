@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, makeStyles } from '@material-ui/core';
 import Post from './Post';
+import Share from './Share';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -12,13 +13,9 @@ const MainFeed = () => {
   const classes = useStyles();
   return (
     <Container className={classes.container}>
+      <Share />
       <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      
     </Container>
   )
 }

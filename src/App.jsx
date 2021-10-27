@@ -4,6 +4,7 @@ import Register from './components/pages/auth/Register';
 import Timeline from "./components/pages/timeline/Timeline";
 import { Toaster } from 'react-hot-toast';
 import VerifyUser from "./components/pages/auth/VerifyUser";
+import Profile from "./components/pages/profile/Profile";
 
  
 function App() {
@@ -16,6 +17,8 @@ function App() {
           <Route path="/login" component={Login}></Route>
           <Route path="/verify-user" component={VerifyUser}></Route>
           <Route path="/register" component={Register}></Route>
+          <Route path="/profile" component={Profile}></Route>
+
         </Switch>
       </Router>
       <Toaster 
