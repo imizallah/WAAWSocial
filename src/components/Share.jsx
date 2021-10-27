@@ -5,6 +5,8 @@ import Avatar from '@material-ui/core/Avatar';
 import PermMediaIcon from '@material-ui/icons/PermMedia';
 import { Cancel, EmojiEmotions, Label, Room } from '@material-ui/icons';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const Share = () => {
   const { user } = useContext(AuthContext);
@@ -15,7 +17,51 @@ const Share = () => {
   const submitForm = async (e) => {
     e.preventDefault();
 
-    console.log(image);
+    if (!post.current.value) return toast.error('Please type a post');
+
+    const noImage = {};
+
+    if (image) {
+      const data = new FormData();
+      data.append("postMedia", image);
+      data.append('description', post.current.value);
+      data.append('mediaType', 'image');
+
+      try {
+        let postRes = await axios.post('http://localhost:7000/api/v1/post', 
+        data, 
+        {
+          headers: {
+            'content-type': 'application/json',
+            'access-token': user.token
+          }
+        });
+
+        if(postRes.data.success) return toast.success(postRes.data.msg);
+        window.location.reload();
+      }catch(err) {
+        if(!err.response.data.success) return toast.error(err.response.data.msg);
+      }
+    }else{
+      noImage.description = post.current.value;
+      noImage.mediaType = '';
+
+      try {
+        let postRes = await axios.post('http://localhost:7000/api/v1/post', 
+        noImage, 
+        {
+          headers: {
+            'content-type': 'application/json',
+            'access-token': user.token
+          }
+        });
+
+        if(postRes.data.success) return toast.success(postRes.data.msg);
+        window.location.reload();
+      }catch(err) {
+        if(!err.response.data.success) return toast.error(err.response.data.msg);
+      }
+    }
 
   }
 
@@ -85,7 +131,7 @@ const Share = () => {
             </div>
           </div>
 
-          <button className="share__button" type="submit">Share</button>
+          <button className="share__button" type="submit">Post</button>
         </form>
 
       </div>

@@ -26,9 +26,7 @@ const MainFeed = () => {
     });
 
     setPosts(res.data.allPosts);
-    console.log(res.data)
   }
-
 
   useEffect(() => {
     getPosts();

@@ -123,10 +123,10 @@ export default function NavBar() {
       {
         user ? 
         <>
-          <MenuItem onClick={() => history.push('/login')}>
+          <MenuItem onClick={() => history.push('/profile')}>
             Profile
           </MenuItem>
-          <MenuItem onClick={() => history.push('/register')}>
+          <MenuItem onClick={() => history.push('/logout')}>
             Logout
           </MenuItem>
         </> :

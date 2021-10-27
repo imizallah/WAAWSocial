@@ -18,6 +18,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Comment } from '@material-ui/icons';
+import { format } from 'timeago.js';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     // height: 250,
-    paddingTop: '56.25%', // 16:9
+    // paddingTop: '56.25%', // 16:9
   },
   expand: {
     transform: 'rotate(0deg)',
@@ -67,19 +68,31 @@ export default function RecipeReviewCard({data}) {
           </IconButton>
         }
         title={data.user.username}
-        subheader={data.createdAt}
+        subheader={format(data.createdAt)}
       />
       {
         data.mediaType === 'image' ? (
           <CardMedia
             className={classes.media}
-            image={
+            src={
               data.media
             }
-            title="Paella dish"
+            title="Post"
+            component="img"
           />
-        ) : null
+        ) : 
+        data.mediaType === 'video' ?
+          <CardMedia
+            className={classes.media}
+            src={
+              data.media
+            }
+            title="Post"
+            component="video"
+            controls
+          /> : null
       }
+
       
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
