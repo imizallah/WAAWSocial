@@ -58,7 +58,7 @@ const Register = () => {
     } 
 
     try {
-      let res = await axios.post('http://localhost:7000/api/v1/auth/register', user);
+      let res = await axios.post('https://api-waawsoc.herokuapp.com/api/v1/auth/register', user);
       if(res.data.success) toast.success(res.data.msg);
       history.push('/verify-user');
     }catch(err) { 

@@ -58,7 +58,7 @@ export default function RecipeReviewCard({data}) {
 
   const likePost = async () => {
     try {
-      let likeRes = await axios.put(`http://localhost:7000/api/v1/post/${data._id}/like`, {},
+      let likeRes = await axios.put(`https://api-waawsoc.herokuapp.com/api/v1/post/${data._id}/like`, {},
       {
         headers: {
           'content-type': 'application/json',

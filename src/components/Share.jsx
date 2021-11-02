@@ -28,7 +28,7 @@ const Share = () => {
       data.append('mediaType', 'image');
 
       try {
-        let postRes = await axios.post('http://localhost:7000/api/v1/post', 
+        let postRes = await axios.post('https://api-waawsoc.herokuapp.com/api/v1/post', 
         data, 
         {
           headers: {
@@ -47,7 +47,7 @@ const Share = () => {
       noImage.mediaType = '';
 
       try {
-        let postRes = await axios.post('http://localhost:7000/api/v1/post', 
+        let postRes = await axios.post('https://api-waawsoc.herokuapp.com/api/v1/post', 
         noImage, 
         {
           headers: {
