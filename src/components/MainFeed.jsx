@@ -18,7 +18,7 @@ const MainFeed = () => {
   const {user} = useContext(AuthContext);
 
   const getPosts = async () => {
-    let res = await axios.get("http://localhost:7000/api/v1/post", {
+    let res = await axios.get("https://api-waawsoc.herokuapp.com/api/v1/post", {
       headers: {
         'content-type': 'application/json',
         'access-token': user.token
