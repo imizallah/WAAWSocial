@@ -38,7 +38,7 @@ const Share = () => {
         });
 
         if(postRes.data.success) return toast.success(postRes.data.msg);
-        window.location.reload();
+        setPost('')
       }catch(err) {
         if(!err.response.data.success) return toast.error(err.response.data.msg);
       }
@@ -57,7 +57,7 @@ const Share = () => {
         });
 
         if(postRes.data.success) return toast.success(postRes.data.msg);
-        window.location.reload();
+        setPost('')
       }catch(err) {
         if(!err.response.data.success) return toast.error(err.response.data.msg);
       }
