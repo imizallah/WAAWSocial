@@ -30,7 +30,7 @@ const MainFeed = () => {
 
   useEffect(() => {
     getPosts();
-  }, [])
+  }, [posts])
 
   return (
     <Container className={classes.container}>
