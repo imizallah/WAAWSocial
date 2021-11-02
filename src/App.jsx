@@ -5,15 +5,23 @@ import Timeline from "./components/pages/timeline/Timeline";
 import { Toaster } from 'react-hot-toast';
 import VerifyUser from "./components/pages/auth/VerifyUser";
 import Profile from "./components/pages/profile/Profile";
+import {useContext} from 'react';
+import {AuthContext} from './context/AuthContext';
 
  
 function App() {
- 
+  const { user } = useContext(AuthContext);
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path="/" component={Timeline}></Route>
+          <Route exact path="/">
+            {
+              user ?
+              <Timeline />
+              : <Login />
+            }
+          </Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/verify-user" component={VerifyUser}></Route>
           <Route path="/register" component={Register}></Route>
