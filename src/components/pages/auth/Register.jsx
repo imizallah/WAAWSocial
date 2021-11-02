@@ -62,7 +62,8 @@ const Register = () => {
       if(res.data.success) toast.success(res.data.msg);
       history.push('/verify-user');
     }catch(err) { 
-      if(!err.response.data.success) return toast.error(err.response.data.msg);
+      // if(!err.response.data.success) return toast.error(err.response.data.msg);
+      console.log(err)
     }
 
   }
