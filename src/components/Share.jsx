@@ -10,21 +10,21 @@ import axios from 'axios';
 
 const Share = () => {
   const { user } = useContext(AuthContext);
-  const post = useRef();
+  const [post, setPost] = useState('');
   const [image, setImage] = useState(null);
   const [video, setVideo] = useState(null);
 
   const submitForm = async (e) => {
     e.preventDefault();
 
-    if (!post.current.value) return toast.error('Please type a post');
+    if (!post) return toast.error('Please type a post');
 
     const noImage = {};
 
     if (image) {
       const data = new FormData();
       data.append("postMedia", image);
-      data.append('description', post.current.value);
+      data.append('description', post);
       data.append('mediaType', 'image');
 
       try {
@@ -43,7 +43,7 @@ const Share = () => {
         if(!err.response.data.success) return toast.error(err.response.data.msg);
       }
     }else{
-      noImage.description = post.current.value;
+      noImage.description = post;
       noImage.mediaType = '';
 
       try {
@@ -87,7 +87,8 @@ const Share = () => {
               `What's on your mind ${user ? user.user.username : ''}?`
             }
             className="share__input"
-            ref={post}
+            value={post}
+            onChange={(e) => setPost(e.target.value)}
           />
         </div>
 

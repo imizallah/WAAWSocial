@@ -52,6 +52,10 @@ export default function RecipeReviewCard({data}) {
     setUserLiked(data.likes.includes(user.user._id));
   }, [user.user._id, data.likes]);
 
+  useEffect(() => {
+
+  }, [data])
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
